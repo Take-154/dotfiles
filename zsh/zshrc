@@ -1,0 +1,23 @@
+export ZSH="$HOME/.oh-my-zsh"
+export PATH=$(echo $PATH | tr ':' '\n' | grep -v 'msys64' | paste -sd:)
+
+ZSH_THEME="refined"
+plugins=(
+	git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+alias la='ls -A'
+alias start='/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe start'
+alias msedge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
+
+bindkey '^H' backward-kill-word
+bindkey '^[[3;5~' kill-word
+
+compdef '_files' perf
+
+setopt NO_BEEP
+

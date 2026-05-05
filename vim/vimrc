@@ -1,0 +1,20 @@
+set number
+set virtualedit=block
+set clipboard=unnamed,autoselect
+
+set termguicolors
+augroup TransparentSlate
+  autocmd!
+  autocmd ColorScheme slate highlight Normal ctermbg=NONE guibg=NONE
+  autocmd ColorScheme slate highlight NonText ctermbg=NONE guibg=NONE
+  autocmd ColorScheme slate highlight LineNr ctermbg=NONE guibg=NONE
+  autocmd ColorScheme slate highlight SignColumn ctermbg=NONE guibg=NONE
+augroup END
+colorscheme slate
+
+set clipboard=unnamedplus
+
+set noerrorbells
+set novisualbell
+set vb t_vb=
+
