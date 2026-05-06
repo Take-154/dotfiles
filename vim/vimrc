@@ -12,7 +12,8 @@ augroup TransparentSlate
 augroup END
 colorscheme slate
 
-set clipboard=unnamedplus
+set clipboard&
+set clipboard^=unnamedplus
 
 set noerrorbells
 set novisualbell
