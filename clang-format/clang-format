@@ -18,6 +18,7 @@ AllowShortLoopsOnASingleLine: true
 PointerAlignment: Left
 ReferenceAlignment: Left
 AfterCaseLabel: false
-AfterControlStatement: Never
 IndentAccessModifiers: false
 SortIncludes: Never
+AlignOperands: Align
+

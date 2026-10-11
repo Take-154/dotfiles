@@ -1,23 +1,116 @@
-export ZSH="$HOME/.oh-my-zsh"
-export PATH=$(echo $PATH | tr ':' '\n' | grep -v 'msys64' | paste -sd:)
+##############################
+# Environmental variables
+##############################
 
-ZSH_THEME="refined"
-plugins=(
-	git
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-)
+export EDITOR=vim
+export VISUAL=vim
+export PAGER=less
+export LESS='-FR'
 
-source $ZSH/oh-my-zsh.sh
+[[ -f "$HOME/.zsh/config/env.zsh" ]] &&
+	source "$HOME/.zsh/config/env.zsh"
 
+##############################
+# Options
+##############################
+
+# history
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000
+SAVEHIST=10000
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+
+setopt NO_BEEP
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+
+##############################
+# Completion
+##############################
+
+autoload -Uz compinit
+compinit
+
+# 補完候補をメニュー形式で表示
+zmodload zsh/complist
+zstyle ':completion:*' menu select
+
+# 補完候補の色分け
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
+zstyle ':completion:*' group-name ''
+
+##############################
+# Prompt
+##############################
+
+# Pure
+fpath+=($HOME/.zsh/pure)
+
+autoload -Uz promptinit
+promptinit
+prompt pure
+
+##############################
+# Aliases
+##############################
+
+alias ls='ls --color=auto'
 alias la='ls -A'
-alias start='/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/powershell.exe start'
-alias msedge='/mnt/c/Program\ Files\ \(x86\)/Microsoft/Edge/Application/msedge.exe'
+alias ll='ls -l'
+alias lla='ls -al'
+alias grep='grep -E --color=auto'
+alias df='df -h'
+alias du='du -h'
+
+[[ -f "$HOME/.zsh/config/alias.zsh" ]] &&
+	source "$HOME/.zsh/config/alias.zsh"
+
+##############################
+# Key-bindings
+##############################
 
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
+bindkey '^[[1;5D' backward-word
+bindkey '^[[1;5C' forward-word
 
-compdef '_files' perf
+# History prefix search
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
 
-setopt NO_BEEP
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# Tab キーで補完候補を選択
+bindkey '^I' complete-word
+
+# CSI
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+# SS3
+bindkey '^[OA' up-line-or-beginning-search
+bindkey '^[OB' down-line-or-beginning-search
+
+[[ -f "$HOME/.zsh/config/keybind.zsh" ]] &&
+	source "$HOME/.zsh/config/keybind.zsh"
+
+##############################
+# Plugins
+##############################
+
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-syntax-highlighting
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
