@@ -70,6 +70,7 @@ prompt pure
 alias ls='ls --color=auto'
 alias la='ls -A'
 alias ll='ls -l'
+alias l='ls -CF'
 alias lla='ls -al'
 alias grep='grep -E --color=auto'
 alias df='df -h'
