@@ -7,6 +7,8 @@ export VISUAL=vim
 export PAGER=less
 export LESS='-FR'
 
+WORDCHARS=${WORDCHARS//[\/=]}
+
 [[ -f "$HOME/.zsh/config/env.zsh" ]] &&
 	source "$HOME/.zsh/config/env.zsh"
 
@@ -82,8 +84,8 @@ alias du='du -h'
 
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
-bindkey '^[[1;5D' backward-word
-bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' emacs-backward-word
+bindkey '^[[1;5C' emacs-forward-word
 
 # History prefix search
 autoload -Uz up-line-or-beginning-search
