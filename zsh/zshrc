@@ -3,7 +3,7 @@
 ##############################
 
 export EDITOR=vim
-export VISUAL=vim
+export VISUAL=$EDITOR
 export PAGER=less
 export LESS='-FR'
 
@@ -83,6 +83,8 @@ alias du='du -h'
 # Key-bindings
 ##############################
 
+bindkey -e
+bindkey '^?' backward-delete-char
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 bindkey '^[[1;5D' emacs-backward-word
