@@ -58,7 +58,10 @@ if vim.fn.has("nvim-0.12") == 1 then
 end
 
 vim.opt.complete = ".,w,b"
-vim.opt.completeopt = { "menuone", "noinsert", "popup" }
+vim.opt.completeopt = { "menuone", "noinsert" }
+if vim.fn.has("nvim-0.10") == 1 then
+    vim.opt.completeopt:append("popup")
+end
 
 -- ========================================
 -- ベル・通知
