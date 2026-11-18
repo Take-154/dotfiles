@@ -18,7 +18,8 @@ vim.cmd.colorscheme("vscode")
 -- ステータスラインを右寄せ・背景透過
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
-vim.opt.statusline = "%=%t %m %l,%c %P"
+-- vim.opt.statusline = "%=%t %m %l,%c %P"
+vim.opt.statusline = "%=%t %m [%{mode()}] %l,%c %P"
 
 vim.api.nvim_set_hl(0, "StatusLine", {
     bg = "NONE",
