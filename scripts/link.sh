@@ -12,7 +12,8 @@ done
 [[ $ln_opt == "-" ]] && ln_opt=""
 
 ln $ln_opt ~/.dotfiles/zsh/zshrc ~/.zshrc
-ln $ln_opt ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+ln $ln_opt ~/.dotfiles/tmux/tmux.conf ~/.config/tmux/tmux.conf
 ln $ln_opt ~/.dotfiles/vim/vimrc ~/.vimrc
 ln $ln_opt ~/.dotfiles/clang-format/clang-format ~/.clang-format
+ln $ln_opt ~/.dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 
