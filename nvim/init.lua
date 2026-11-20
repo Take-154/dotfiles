@@ -24,6 +24,22 @@ require("vscode").setup({
 
 vim.cmd.colorscheme("vscode")
 
+-- 空白文字を可視化
+vim.opt.list = true
+
+vim.opt.listchars = {
+    tab = "→ ",
+    space = "·",
+    trail = "·",
+    extends = "›",
+    precedes = "‹",
+    nbsp = "␣",
+}
+
+vim.api.nvim_set_hl(0, "Whitespace", {
+    fg = "#3F3F3E",
+})
+
 -- ステータスラインを右寄せ・背景透過
 vim.opt.cmdheight = 0
 vim.opt.laststatus = 3
